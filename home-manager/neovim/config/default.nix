@@ -4,13 +4,14 @@
     ./bufferline.nix
     ./nvim-tree.nix
     ./lualine.nix
+    ./navic.nix
     ./keymap.nix
     ./lsp.nix
     ./telescope.nix
     ./terminal.nix
   ];
 
-  programs.nixvim.colorschemes.dracula.enable = true;
+  programs.nixvim.colorschemes.oxocarbon.enable = true;
 
   programs.nixvim.autoCmd = [
     {
@@ -24,6 +25,8 @@
     fugitive.enable = true;
     diffview.enable = true;
     surround.enable = true;
+    nvim-colorizer.enable = true;
+    comment-nvim.enable = true;
   };
 
   programs.nixvim.extraConfigVim = ''

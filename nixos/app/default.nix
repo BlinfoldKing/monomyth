@@ -9,7 +9,10 @@
     git
     kitty
     just
-    shotman
+    grim
+    slurp
+    wl-clipboard
+    grimblast
   ];
 
   programs.thunar.enable = true;

@@ -14,7 +14,6 @@
       { name = "nvim_lsp"; }
       { name = "path"; }
       { name = "buffer"; }
-
     ];
   };
 

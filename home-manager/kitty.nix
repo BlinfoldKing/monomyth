@@ -3,7 +3,7 @@
     inputs.nix-colors.homeManagerModules.default
   ];
 
-  colorScheme = inputs.nix-colors.colorSchemes.dracula;
+  colorScheme = inputs.nix-colors.colorSchemes.oxocarbon-dark;
 
   programs = {
     kitty = {
