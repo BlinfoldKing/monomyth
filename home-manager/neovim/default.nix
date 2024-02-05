@@ -6,9 +6,5 @@
   ];
 
   programs.nixvim.enable = true;
-  programs.nixvim.clipboard.providers.xclip = {
-    enable = true;
-    package = pkgs.xclip;
-  };
-  # programs.nixvim.globals.mapleader = "<Space>";
+  programs.nixvim.clipboard.register = "unnamedplus";
 }

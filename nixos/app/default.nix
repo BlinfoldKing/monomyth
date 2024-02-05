@@ -5,6 +5,7 @@
     networkmanager-openvpn
 
     google-chrome
+    discord
 
     git
     kitty
@@ -13,9 +14,11 @@
     slurp
     wl-clipboard
     grimblast
+
+    gnome3.gvfs
+    gnome3.nautilus
   ];
 
-  programs.thunar.enable = true;
 
   programs.steam = {
     enable = true;
@@ -34,7 +37,6 @@
   };
 
   users.defaultUserShell = pkgs.zsh;
-
 
   programs.starship = {
     enable = true;

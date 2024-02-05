@@ -9,6 +9,7 @@
     ./lsp.nix
     ./telescope.nix
     ./terminal.nix
+    ./git.nix
   ];
 
   programs.nixvim.colorschemes.oxocarbon.enable = true;
@@ -21,8 +22,16 @@
     }
   ];
 
+  programs.nixvim.plugins.alpha = {
+    enable = true;
+    iconsEnabled = true;
+    theme = "theta";
+  };
+
   programs.nixvim.plugins = {
-    fugitive.enable = true;
+    cursorline.enable = true;
+    notify.enable = true;
+    rest.enable = true;
     diffview.enable = true;
     surround.enable = true;
     nvim-colorizer.enable = true;

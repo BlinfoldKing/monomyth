@@ -4,12 +4,26 @@
     ./drivers/default.nix
     ./wm/default.nix
     ./app/default.nix
+    ./languages/default.nix
   ];
 
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    stdenv.cc.cc
+    # Add any missing dynamic libraries for unpackaged programs
+    # here, NOT in environment.systemPackages
+  ];
+
+
   environment.systemPackages = with pkgs; [
-    gcc
+    gnumake
+    just
     ripgrep
     home-manager
+    gnumake
+    wget
+    jq
+    html-tidy
   ];
 
   nix.settings.warn-dirty = false;
