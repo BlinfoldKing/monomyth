@@ -1,0 +1,146 @@
+(defpoll active-app :interval "200ms"
+  :initial ""
+  "hyprctl activewindow -j")
+
+(defpoll active-workspace :interval "200ms"
+  :initial ""
+  "hyprctl activeworkspace -j")
+
+(defpoll time :interval "1s"
+              :initial "initial-value"  
+              `date +%H:%M`)
+
+(defpoll username :interval "10h" 
+  :initial ""
+  "whoami")
+
+(defpoll hostname :interval "10h"
+  :initial ""
+  "hostnamectl | grep 'hostname' | awk '{print $3}'")
+
+
+
+(defwindow header
+  :monitor 0
+  :geometry (geometry
+    :height "30px"
+    :anchor "top center")
+  :exclusive true
+  :stacking "overlay"
+  :windowtype "dock"
+  :wm-ignore false
+  (box
+    :widh 100
+    :class "header"
+    "${active-app.title}"
+  ))
+
+(defwindow workspace
+  :monitor 0
+  :geometry (geometry
+    :height "30px"
+    :anchor "bottom center")
+  :exclusive true
+  :stacking "overlay"
+  :windowtype "dock"
+  :wm-ignore false
+  (box
+    :class "workspace"
+    :width 200
+    :space-evenly true
+    (workspace-item :id "1")
+    (workspace-item :id "2")
+    (workspace-item :id "3")
+    (workspace-item :id "4")
+    (workspace-item :id "5")
+    ))
+
+(defwidget workspace-item [id]
+    (eventbox 
+      :onclick "hyprctl dispatch workspace ${id}"
+      "${active-workspace.id == id ? "" : ""}" ))
+
+(defwindow tray
+  :monitor 0
+  :geometry (geometry
+    :height "30px"
+    :y "-30px"
+    :anchor "bottom left")
+  :exclusive true
+  :stacking "overlay"
+  :windowtype "dock"
+  :wm-ignore false
+  (box
+    :class "tray"
+    (box :tooltip 
+      "${EWW_CPU.cores[0].core}: ${EWW_CPU.cores[0].usage}%
+${EWW_CPU.cores[1].core}: ${EWW_CPU.cores[1].usage}%
+${EWW_CPU.cores[2].core}: ${EWW_CPU.cores[2].usage}%
+${EWW_CPU.cores[3].core}: ${EWW_CPU.cores[3].usage}%
+${EWW_CPU.cores[4].core}: ${EWW_CPU.cores[4].usage}%
+${EWW_CPU.cores[5].core}: ${EWW_CPU.cores[5].usage}%
+${EWW_CPU.cores[6].core}: ${EWW_CPU.cores[6].usage}%
+${EWW_CPU.cores[7].core}: ${EWW_CPU.cores[7].usage}%
+${EWW_CPU.cores[8].core}: ${EWW_CPU.cores[8].usage}%
+${EWW_CPU.cores[9].core}: ${EWW_CPU.cores[9].usage}%
+${EWW_CPU.cores[10].core}: ${EWW_CPU.cores[10].usage}%
+${EWW_CPU.cores[11].core}: ${EWW_CPU.cores[11].usage}%
+${EWW_CPU.cores[12].core}: ${EWW_CPU.cores[12].usage}%
+${EWW_CPU.cores[13].core}: ${EWW_CPU.cores[13].usage}%
+${EWW_CPU.cores[14].core}: ${EWW_CPU.cores[14].usage}%
+${EWW_CPU.cores[15].core}: ${EWW_CPU.cores[15].usage}%"
+
+      " ${EWW_TEMPS.K10TEMP_TCCD1} 󰔄")
+    (box "󰨣 ${round(EWW_RAM.used_mem / 1000000, 1)} M / ${round(EWW_RAM.used_mem / 1000000, 1)} M")
+  ))
+
+(defwindow power-button
+  :monitor 0
+  :geometry (geometry
+    :height "30px"
+    :y "-30px"
+    :anchor "bottom right")
+  :exclusive true
+  :stacking "overlay"
+  :windowtype "dock"
+  :wm-ignore false
+  (box
+    (power)))
+
+(defwidget clock []
+  (box
+    :class "clock"
+    "${time}"
+  ))
+
+(defvar power_rev "false")
+(defwidget power []
+  (eventbox
+    :class "power"
+    :onhover "${EWW_CMD} update power_rev=true"
+    :onhoverlost "${EWW_CMD} update power_rev=false"
+    (box
+      :space-evenly false
+      (revealer
+        :transition "slideright"
+        :reveal power_rev
+        (box 
+          (eventbox
+            :width "50"
+            :class "logout"
+            :tooltip "logout"
+            :onclick "pkill -KILL -u ${username}"
+            "󰿅")
+          (eventbox
+            :width "50"
+            :tooltip "restart"
+            :class "reboot"
+            "󰜉")
+        ))
+      (eventbox
+        :width "50"
+        :class "poweroff"
+        :tooltip "shut down"
+        :onclick "poweroff"
+        "⏻")
+    )))

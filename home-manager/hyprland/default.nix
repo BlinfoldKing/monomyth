@@ -1,10 +1,12 @@
 { pkgs, inputs, config, ... }:
 let startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
-  waybar &
-  nm-applet &
-
-  swww init & sleep 1 &
-  swww img ${./../../assets/mario.gif} &
+  swww init &
+  eww -c ${./widgets} open header &
+  eww -c ${./widgets} open tray &
+  eww -c ${./widgets} open workspace &
+  eww -c ${./widgets} open power-button &
+  sleep 1 &
+  swww img ${./../../assets/wallpaper.jpg} &
 '';
 in
 {
@@ -20,10 +22,10 @@ in
         gaps_in = 5;
         gaps_out = 20;
         border_size = 5;
-        "col.active_border" = "0x${base0A} 0x${base08} 45deg";
+        "col.active_border" = "0x${base0A} 0x${base00} 45deg";
         "col.inactive_border" = "0x${base04}";
 
-        layout = "wdwindle";
+        layout = "dwindle";
 
         allow_tearing = false;
       };
@@ -32,7 +34,7 @@ in
         {
           # See https://wiki.hyprland.org/Configuring/Variables/ for more
 
-          rounding = 10;
+          # rounding = 10;
 
           blur = {
             enabled = true;
@@ -49,7 +51,7 @@ in
 
       "$terminal" = "kitty";
       "$fileManager" = "dolphin";
-      "$menu" = "wofi --show drun";
+      "$menu" = "rofi -show drun -show-icons";
 
 
 
@@ -60,7 +62,7 @@ in
 
       dwindle = {
         preserve_split = true;
-        no_gaps_when_only = true;
+        no_gaps_when_only = false;
         smart_split = true;
       };
 

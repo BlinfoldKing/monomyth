@@ -1,7 +1,7 @@
 {
   # Import all your configuration modules here
   imports = [
-    ./bufferline.nix
+    ./barbar.nix
     ./nvim-tree.nix
     ./lualine.nix
     ./navic.nix

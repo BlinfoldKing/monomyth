@@ -17,6 +17,7 @@
     # ./nvim.nix
     ./kitty.nix
     ./gtk.nix
+    ./starship.nix
     ./neovim/default.nix
     ./hyprland/default.nix
   ];

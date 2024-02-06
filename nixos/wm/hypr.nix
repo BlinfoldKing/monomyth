@@ -18,16 +18,14 @@
 
   # List packages installed in system profile. To search, run:
   environment.systemPackages = with pkgs; [
-    (pkgs.waybar.overrideAttrs (oldAttrs: {
-      mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-    }))
+    eww-wayland
 
-    pkgs.dunst
+    dunst
     libnotify
 
     swww
 
-    wofi
+    rofi-wayland
   ];
 
   xdg.portal = {

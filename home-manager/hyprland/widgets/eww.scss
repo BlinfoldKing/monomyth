@@ -1,0 +1,63 @@
+$base00: #161616;
+$base01: #262626;
+$base02: #393939;
+$base03: #525252;
+$base04: #dde1e6;
+$base05: #f2f4f8;
+$base06: #ffffff;
+$base07: #08bdba;
+$base08: #3ddbd9;
+$base09: #78a9ff;
+$base0A: #ee5396;
+$base0B: #33b1ff;
+$base0C: #ff7eb6;
+$base0D: #42be65;
+$base0E: #be95ff;
+$base0F: #82cfff;
+
+* {
+  font-family: "Caskaydia Cove Nerd Font";
+}
+
+.padded {
+    padding: 10px;
+}
+
+.header {
+  // background: $base0A;
+  background: transparent;
+  color: $base05;
+  font-weight: 400;
+  padding: 5px;
+}
+
+.logout {
+  background: $base0E;
+  color: $base00;
+}
+
+.reboot {
+
+}
+
+.poweroff {
+  background: transparent;
+  background: $base0A;
+}
+
+.workspace {
+ background: transparent;
+ font-size: 20px;
+ *:hover {
+   color: $base00;
+ }
+}
+
+.tray {
+  background: transparent;
+  padding-left: 30px;
+  * {
+    color: $base05;
+    margin-right: 10px;
+  }
+}
