@@ -3,61 +3,73 @@
     inputs.nix-colors.homeManagerModules.default
   ];
 
-  colorScheme = inputs.nix-colors.colorSchemes.oxocarbon-dark;
 
-  programs = {
-    kitty = {
-      enable = true;
-      settings = {
-        foreground = "#${config.colorScheme.palette.base05}";
-        background = "#${config.colorScheme.palette.base00}";
+  programs = with config.colorScheme.palette;
+    {
+      kitty = {
+        enable = true;
+        settings = {
+          foreground = "#${base05}";
+          background = "#${base00}";
 
-        # black
-        color0 = "#${config.colorScheme.palette.base00}";
-        color8 = "#${config.colorScheme.palette.base01}";
+          color0 = "#${base00}";
+          color8 = "#${base01}";
 
-        # red
-        color1 = "#${config.colorScheme.palette.base0A}";
-        color9 = "#${config.colorScheme.palette.base0C}";
+          color1 = "#${base02}";
+          color9 = "#${base03}";
 
-        # green
-        color2 = "#${config.colorScheme.palette.base0D}";
-        color10 = "#${config.colorScheme.palette.base0C}";
+          color2 = "#${base04}";
+          color10 = "#${base05}";
 
-        # yellow
-        color3 = "#${config.colorScheme.palette.base0E}";
-        color11 = "#${config.colorScheme.palette.base06}";
+          color3 = "#${base06}";
+          color11 = "#${base07}";
 
-        # blue
-        color4 = "#${config.colorScheme.palette.base0E}";
-        color12 = "#${config.colorScheme.palette.base0F}";
+          color4 = "#${base08}";
+          color12 = "#${base09}";
 
-        # magenta
-        color5 = "#${config.colorScheme.palette.base0E}";
-        color13 = "#${config.colorScheme.palette.base0F}";
+          color5 = "#${base0A}";
+          color13 = "#${base0B}";
 
+          color6 = "#${base0C}";
+          color14 = "#${base0D}";
 
-        # cyan
-        color6 = "#${config.colorScheme.palette.base07}";
-        color14 = "#${config.colorScheme.palette.base08}";
+          color7 = "#${base0E}";
+          color15 = "#${base0F}";
 
+          # Window borders
+          active_border_color = "#${base0C}";
+          inactive_border_color = "#${base04}";
+          bell_border_color = "#${base0A}";
 
-        # white
-        color7 = "#${config.colorScheme.palette.base05}";
-        color15 = "#${config.colorScheme.palette.base06}";
+          font_family = "Caskaydia Cove Nerd Font";
 
+          # tab_bar_style = "fade";
+          tab_bar_style = "powerline";
+          active_tab_foreground = "#${base05}";
+          active_tab_background = "#${base0A}";
+          active_tab_font_style = "bold";
+          inactive_tab_foreground = "#${base00}";
+          inactive_tab_background = "#${base05}";
+          tab_bar_background = "#${base00}";
 
-        font_family = "Caskadia Code Nerd Font";
+          background_opacity = "0.90";
+          window_padding_width = "10";
+        };
+        keybindings = {
+          "F5" = "launch --location=hsplit";
+          "F6" = "launch --location=vsplit";
+          "F7" = "layout_action rotate";
 
-        tab_bar_style = "powerline";
-        background_opacity = "0.8";
-        window_padding_width = "10";
-      };
-      keybindings = {
-        "F5" = "launch --location=hsplit";
-        "F6" = "launch --location=vsplit";
-        "F7" = "layout_action rotate";
+          "shift+up" = "move_window up";
+          "shift+left" = "move_window left";
+          "shift+right" = "move_window right";
+          "shift+down" = "move_window down";
+
+          "ctrl+up" = "neighboring_window up";
+          "ctrl+left" = "neighboring_window left";
+          "ctrl+right" = "neighboring_window right";
+          "ctrl+down" = "neighboring_window down";
+        };
       };
     };
-  };
 }

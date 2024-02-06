@@ -12,6 +12,7 @@
         installCargo = false;
         installRustc = false;
       };
+      yamlls.enable = true;
       jsonls.enable = true;
     };
   };

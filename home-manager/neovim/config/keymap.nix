@@ -83,11 +83,11 @@
           "notifications"
         ];
         q = [ "<cmd>qa!<cr>" "close all and exit" ];
-        http = {
+        h = {
           name = "http action";
           t = [
             ''
-              <cmd>lua require("rest-nvim").run_file(vim.fn.expand("%:p"), {})<cr>
+              <cmd>lua require("rest-nvim").run_file(vim.fn.expand("%:p"), { keep_going = true })<cr>
             ''
             "run http request"
           ];

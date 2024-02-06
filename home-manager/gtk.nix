@@ -11,6 +11,11 @@
       package = pkgs.whitesur-icon-theme;
     };
 
+    cursorTheme = {
+      name = "WhiteSur";
+      package = pkgs.whitesur-cursors;
+    };
+
     gtk3.extraConfig = {
       Settings = ''
         gtk-application-prefer-dark-theme = 1

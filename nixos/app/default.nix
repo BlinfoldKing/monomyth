@@ -6,6 +6,7 @@
 
     google-chrome
     discord
+    insomnia
 
     git
     kitty
@@ -24,6 +25,7 @@
     enable = true;
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
+    gamescopeSession.enable = true;
   };
   # enable controller
   hardware.xpadneo.enable = true;

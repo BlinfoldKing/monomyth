@@ -6,6 +6,8 @@
 , pkgs
 , ...
 }: {
+
+  colorScheme = inputs.nix-colors.colorSchemes.oxocarbon-dark;
   # You can import other home-manager modules here
   imports = [
     # If you want to use home-manager modules from other flakes (such as nix-colors):
@@ -16,6 +18,7 @@
     ./kitty.nix
     ./gtk.nix
     ./neovim/default.nix
+    ./hyprland/default.nix
   ];
 
   nixpkgs = {

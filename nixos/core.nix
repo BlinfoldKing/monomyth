@@ -24,13 +24,16 @@
     wget
     jq
     html-tidy
+    httpie
   ];
 
   nix.settings.warn-dirty = false;
 
   fonts.packages = with pkgs; [
-    pkgs.fira-code
-    pkgs.victor-mono
+    fira-code
+    victor-mono
+    font-awesome
+    ibm-plex
     (nerdfonts.override { fonts = [ "CascadiaCode" ]; })
   ];
   fonts.fontconfig.defaultFonts.monospace = [ "CascadiaCode" "Fira Code" "Victor Mono" ];

@@ -1,6 +1,6 @@
 update:
-	@just home
 	@just os
+	@just home
 
 home:
 	home-manager build switch --flake .#blinfoldking@nixos
