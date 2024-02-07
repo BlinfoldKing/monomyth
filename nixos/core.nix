@@ -38,4 +38,6 @@
   ];
   fonts.fontconfig.defaultFonts.monospace = [ "CascadiaCode" "Fira Code" "Victor Mono" ];
 
+  environment.variables.EDITOR = "nvim";
+
 }
