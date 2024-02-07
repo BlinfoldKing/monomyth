@@ -5,8 +5,8 @@
 , config
 , pkgs
 , ...
-}: {
-
+}:
+{
   colorScheme = inputs.nix-colors.colorSchemes.oxocarbon-dark;
   # You can import other home-manager modules here
   imports = [
@@ -15,11 +15,14 @@
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
-    ./kitty.nix
+    inputs.nix-colors.homeManagerModules.default
     ./gtk.nix
     ./starship.nix
     ./neovim/default.nix
-    ./hyprland/default.nix
+    # ./hyprland/default.nix
+    # ./kitty.nix
+    (import ./kitty.nix { inherit pkgs inputs; palette = config.colorScheme.palette; })
+    (import ./hyprland/default.nix { inherit pkgs inputs; palette = config.colorScheme.palette; })
   ];
 
   nixpkgs = {

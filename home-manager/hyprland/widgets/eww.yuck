@@ -8,7 +8,7 @@
 
 (defpoll time :interval "1s"
               :initial "initial-value"  
-              `date +%H:%M`)
+              `date +%H:%M:%S`)
 
 (defpoll username :interval "10h" 
   :initial ""
@@ -19,7 +19,7 @@
   "hostnamectl | grep 'hostname' | awk '{print $3}'")
 
 
-
+(defvar is-visible true)
 (defwindow header
   :monitor 0
   :geometry (geometry
@@ -32,7 +32,15 @@
   (box
     :widh 100
     :class "header"
-    "${active-app.title}"
+    :space-evenly false
+    (eventbox
+      :width 30
+      :onclick "${is-visible ? 
+          "${EWW_CMD} close tray workspace quicklaunch & ${EWW_CMD} update is-visible=${!is-visible}"
+          :"${EWW_CMD} open-many tray workspace quicklaunch & ${EWW_CMD} update is-visible=${!is-visible}"
+      }"
+      "${is-visible ? "" : "" }")
+    (box "  ${active-app.title}")
   ))
 
 (defwindow workspace
@@ -44,16 +52,18 @@
   :stacking "overlay"
   :windowtype "dock"
   :wm-ignore false
-  (box
-    :class "workspace"
-    :width 200
-    :space-evenly true
-    (workspace-item :id "1")
-    (workspace-item :id "2")
-    (workspace-item :id "3")
-    (workspace-item :id "4")
-    (workspace-item :id "5")
-    ))
+  (revealer
+    :reveal is-visible
+    (box
+      :class "workspace"
+      :width 200
+      :space-evenly true
+      (workspace-item :id "1")
+      (workspace-item :id "2")
+      (workspace-item :id "3")
+      (workspace-item :id "4")
+      (workspace-item :id "5")
+      )))
 
 (defwidget workspace-item [id]
     (eventbox 
@@ -65,15 +75,19 @@
   :geometry (geometry
     :height "30px"
     :y "-30px"
-    :anchor "bottom left")
+    :anchor "bottom right")
   :exclusive true
   :stacking "overlay"
   :windowtype "dock"
   :wm-ignore false
-  (box
-    :class "tray"
-    (box :tooltip 
-      "${EWW_CPU.cores[0].core}: ${EWW_CPU.cores[0].usage}%
+  (revealer
+    :reveal is-visible
+    (box
+        :class "tray"
+        :space-evenly false
+        :space-between false
+        (box :tooltip 
+          "${EWW_CPU.cores[0].core}: ${EWW_CPU.cores[0].usage}%
 ${EWW_CPU.cores[1].core}: ${EWW_CPU.cores[1].usage}%
 ${EWW_CPU.cores[2].core}: ${EWW_CPU.cores[2].usage}%
 ${EWW_CPU.cores[3].core}: ${EWW_CPU.cores[3].usage}%
@@ -90,9 +104,12 @@ ${EWW_CPU.cores[13].core}: ${EWW_CPU.cores[13].usage}%
 ${EWW_CPU.cores[14].core}: ${EWW_CPU.cores[14].usage}%
 ${EWW_CPU.cores[15].core}: ${EWW_CPU.cores[15].usage}%"
 
-      " ${EWW_TEMPS.K10TEMP_TCCD1} 󰔄")
-    (box "󰨣 ${round(EWW_RAM.used_mem / 1000000, 1)} M / ${round(EWW_RAM.used_mem / 1000000, 1)} M")
-  ))
+          " ${EWW_TEMPS.K10TEMP_TCCD1} 󰔄")
+        (box "${round(EWW_RAM.used_mem / 1000000, 1)}M / ${round(EWW_RAM.total_mem / 1000000, 1)}M")
+        (box :tooltip "wifi" "󰖩 ${EWW_NET.wlp5s0.NET_UP} ${EWW_NET.wlp5s0.NET_UP}")
+        (box :tooltip "eth" "󰈀 ${EWW_NET.enp4s0.NET_UP} ${EWW_NET.enp4s0.NET_UP}")
+        (box " ${time}"
+        ))))
 
 (defwindow power-button
   :monitor 0
@@ -104,7 +121,8 @@ ${EWW_CPU.cores[15].core}: ${EWW_CPU.cores[15].usage}%"
   :stacking "overlay"
   :windowtype "dock"
   :wm-ignore false
-  (box
+  (revealer
+    :reveal is-visible
     (power)))
 
 (defwidget clock []
@@ -117,10 +135,16 @@ ${EWW_CPU.cores[15].core}: ${EWW_CPU.cores[15].usage}%"
 (defwidget power []
   (eventbox
     :class "power"
-    :onhover "eww ${EWW_CONFIG_DIR} update power_rev=true"
-    :onhoverlost "eww ${EWW_CONFIG_DIR} update power_rev=false"
+    :onhover "${EWW_CMD} update power_rev=true"
+    :onhoverlost "${EWW_CMD} update power_rev=false"
     (box
       :space-evenly false
+        (eventbox
+        :width "50"
+        :class "poweroff"
+        :tooltip "shut down"
+        :onclick "poweroff"
+        "⏻")
       (revealer
         :transition "slideright"
         :reveal power_rev
@@ -137,10 +161,36 @@ ${EWW_CPU.cores[15].core}: ${EWW_CPU.cores[15].usage}%"
             :class "reboot"
             "󰜉")
         ))
-      (eventbox
-        :width "50"
-        :class "poweroff"
-        :tooltip "shut down"
-        :onclick "poweroff"
-        "⏻")
+      
+    )))
+
+(defwindow quicklaunch
+  :monitor 0
+  :geometry (geometry
+    :height "30px"
+    :y "-30px"
+    :anchor "bottom left")
+  :exclusive true
+  :stacking "overlay"
+  :windowtype "dock"
+  :wm-ignore false
+  (box
+    (box
+    :class "quicklaunch"
+    :space-evenly false
+    :space-between false
+      (power)
+      (box :style "margin: 0 10px" "${username}@${hostname}")
+      (box
+        :width 150
+        :space-evenly "true"
+        :space-between "true"
+        :class "icon-bar"
+        (eventbox :class "icon" :onclick "hyprctl dispatch exec steam" "󰓓 ")
+        (eventbox :class "icon" :onclick "hyprctl dispatch exec kitty" " ")
+        (eventbox :class "icon" :onclick "hyprctl dispatch exec google-chrome-stable" "󰖟 ")
+        (eventbox :class "icon" :onclick "hyprctl dispatch exec nautilus" " ")
+        (eventbox :class "icon" :onclick `hyprctl dispatch exec "[;float;]" "kitty nmtui"` "󰘊 ")
+ 
+      )
     )))

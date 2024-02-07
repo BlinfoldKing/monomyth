@@ -1,10 +1,5 @@
-{ pkgs, config, inputs, ... }: {
-  imports = [
-    inputs.nix-colors.homeManagerModules.default
-  ];
-
-
-  programs = with config.colorScheme.palette;
+{ pkgs, inputs, palette, ... }: {
+  programs = with palette;
     {
       kitty = {
         enable = true;

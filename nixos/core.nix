@@ -25,6 +25,7 @@
     jq
     html-tidy
     httpie
+    disfetch
   ];
 
   nix.settings.warn-dirty = false;

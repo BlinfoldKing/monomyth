@@ -1,29 +1,28 @@
-{ pkgs, inputs, config, ... }:
-let startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
-  swww init &
-  eww -c ${./widgets} open header &
-  eww -c ${./widgets} open tray &
-  eww -c ${./widgets} open workspace &
-  eww -c ${./widgets} open power-button &
-  sleep 1 &
-  swww img ${./../../assets/wallpaper.jpg} &
-'';
+{ pkgs, inputs, palette, ... }:
+let
+  widgetDir = "${./widgets}";
+  startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
+    swww init &
+    eww -c ${widgetDir} open-many header tray workspace quicklaunch &
+    sleep 1 &
+    swww img ${./../../assets/wallpaper.jpg} &
+  '';
 in
 {
 
   wayland.windowManager.hyprland = {
     enable = true;
 
-    settings = with config.colorScheme.palette; {
+    settings = with palette; {
       "monitor" = ",preferred,auto,auto";
 
       general = {
 
         gaps_in = 5;
         gaps_out = 20;
-        border_size = 5;
-        "col.active_border" = "0x${base0A} 0x${base00} 45deg";
-        "col.inactive_border" = "0x${base04}";
+        border_size = 2;
+        "col.active_border" = "rgb(${base0A}) rgb(${base05}) 60deg";
+        "col.inactive_border" = "rgb(${base01})";
 
         layout = "dwindle";
 
@@ -34,7 +33,7 @@ in
         {
           # See https://wiki.hyprland.org/Configuring/Variables/ for more
 
-          # rounding = 10;
+          rounding = 5;
 
           blur = {
             enabled = true;
@@ -45,7 +44,7 @@ in
           drop_shadow = "yes";
           shadow_range = 4;
           shadow_render_power = 3;
-          "col.shadow" = "0x${base00}";
+          "col.shadow" = "rgb(${base00})";
         };
 
 
@@ -63,7 +62,7 @@ in
       dwindle = {
         preserve_split = true;
         no_gaps_when_only = false;
-        smart_split = true;
+        smart_split = false;
       };
 
 
@@ -75,7 +74,7 @@ in
       bind = [
         "$mod1, Q, exec, $terminal"
         "$mod1, C, killactive, "
-        "$mod1, M, exit, "
+        ''$mod1, M, execr, "pkill -KILL -u $(whoami)"''
         "$mod1, E, exec, $fileManager"
         "$mod1, V, togglefloating, "
         "$mod1, R, exec, $menu"

@@ -37,13 +37,26 @@ $base0F: #82cfff;
 }
 
 .reboot {
-
-}
-
-.poweroff {
-  background: transparent;
+  color: $base00;
   background: $base0A;
 }
+
+.quicklaunch {
+  border-top-right-radius: 10px;
+  background: $base00;
+  font-size: 15px;
+  .icon-bar {
+    .icon {
+      font-size: 20px;
+      margin: 20px;
+      &:hover {
+        color: $base0A;
+      }
+    }
+  }
+}
+
+
 
 .workspace {
  background: transparent;
@@ -61,3 +74,17 @@ $base0F: #82cfff;
     margin-right: 10px;
   }
 }
+
+.hider {
+  margin-right: 10px;
+}
+
+.tray {
+  font-size: 15px;
+}
+
+.poweroff {
+  background: $base00;
+  color: $base0A;
+}
+
