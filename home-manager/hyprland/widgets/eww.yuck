@@ -99,7 +99,7 @@ ${EWW_CPU.cores[15].core}: ${EWW_CPU.cores[15].usage}%"
   :geometry (geometry
     :height "30px"
     :y "-30px"
-    :anchor "bottom right")
+    :anchor "top right")
   :exclusive true
   :stacking "overlay"
   :windowtype "dock"
@@ -117,8 +117,8 @@ ${EWW_CPU.cores[15].core}: ${EWW_CPU.cores[15].usage}%"
 (defwidget power []
   (eventbox
     :class "power"
-    :onhover "${EWW_CMD} update power_rev=true"
-    :onhoverlost "${EWW_CMD} update power_rev=false"
+    :onhover "eww ${EWW_CONFIG_DIR} update power_rev=true"
+    :onhoverlost "eww ${EWW_CONFIG_DIR} update power_rev=false"
     (box
       :space-evenly false
       (revealer
