@@ -6,4 +6,4 @@ home:
 	home-manager build switch --flake .#blinfoldking@nixos
 
 os:
-	sudo nixos-rebuild switch --flake .
+	sudo nixos-rebuild switch --impure --flake .

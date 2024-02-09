@@ -124,7 +124,10 @@ in
         ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
       ];
 
-      exec-once = "${startupScript}/bin/start";
+      exec-once = [
+        "xhost + > /dev/null"
+        "${startupScript}/bin/start"
+      ];
     };
   };
 }
