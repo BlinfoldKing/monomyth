@@ -65,28 +65,10 @@
   };
 
 
-  # override default config
-  boot.loader = {
-    systemd-boot.enable = false;
-    efi.efiSysMountPoint = "/boot";
-
-    grub = {
-      enable = true;
-      efiSupport = true;
-      devices = [ "nodev" ];
-      useOSProber = true;
-      extraEntries = ''
-        menuentry "Windows" {
-          insmod part_gpt
-          insmod fat
-          insmod search_fs_uuid
-          insmod chain
-          search --fs-uuid --set=root 08ca7ca5-e615-4168-8f45-d01b5017b0bd
-          chainloader /EFI/Microsoft/Boot/bootmgfw.efi
-        }
-      '';
-    };
-  };
-
   time.hardwareClockInLocalTime = true;
+
+  services.xserver.xkb = lib.mkForce {
+    layout = "us";
+    variant = "";
+  };
 }

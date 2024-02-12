@@ -2,8 +2,6 @@
   description = "A NixOS config with thousands stories";
 
   inputs = {
-    # TODO: temporary fork
-    # nixpkgs.url = "github:Guanran928/nixpkgs/nixos-unstable";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager.url = "github:nix-community/home-manager";

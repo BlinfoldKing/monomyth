@@ -15,6 +15,8 @@
     mockgen
 
     gcc
+
+    nodejs
   ];
 
 }

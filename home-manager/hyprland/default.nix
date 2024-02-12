@@ -1,4 +1,4 @@
-{ pkgs, inputs, palette, ... }:
+{ pkgs, inputs, palette, lib, config, ... }:
 let
   widgetDir = "${./widgets}";
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
@@ -9,12 +9,33 @@ let
   '';
 in
 {
-
   wayland.windowManager.hyprland = {
     enable = true;
 
     settings = with palette; {
-      "monitor" = ",preferred,auto,auto";
+      # prefer display port
+      # TODO: make this value not hardcoded
+
+      monitor = with buildConfig; [
+        "DP-1,3440x1440@60,0x0,auto"
+        "HDMI-A-1,1920x1080@60,760x1440,auto"
+      ];
+
+      workspace = [
+        # first monitor
+        "1,monitor:DP-1,default:true"
+        "2,monitor:DP-1,"
+        "3,monitor:DP-1,"
+        "4,monitor:DP-1,"
+        "5,monitor:DP-1,"
+
+        # second monitor
+        "6,monitor:HDMI-A-1,"
+        "7,monitor:HDMI-A-1,"
+        "8,monitor:HDMI-A-1,"
+        "9,monitor:HDMI-A-1,"
+        "10,monitor:HDMI-A-1,"
+      ];
 
       general = {
 

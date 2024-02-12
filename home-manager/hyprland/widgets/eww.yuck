@@ -21,7 +21,7 @@
 
 (defvar is-visible true)
 (defwindow header
-  :monitor 0
+  :monitor 1
   :geometry (geometry
     :height "30px"
     :anchor "top center")
@@ -44,7 +44,7 @@
   ))
 
 (defwindow workspace
-  :monitor 0
+  :monitor 1
   :geometry (geometry
     :height "30px"
     :anchor "bottom center")
@@ -71,7 +71,7 @@
       "${active-workspace.id == id ? "" : ""}" ))
 
 (defwindow tray
-  :monitor 0
+  :monitor 1
   :geometry (geometry
     :height "30px"
     :y "-30px"
@@ -112,7 +112,7 @@ ${EWW_CPU.cores[15].core}: ${EWW_CPU.cores[15].usage}%"
         ))))
 
 (defwindow power-button
-  :monitor 0
+  :monitor 1
   :geometry (geometry
     :height "30px"
     :y "-30px"
@@ -165,7 +165,7 @@ ${EWW_CPU.cores[15].core}: ${EWW_CPU.cores[15].usage}%"
     )))
 
 (defwindow quicklaunch
-  :monitor 0
+  :monitor 1
   :geometry (geometry
     :height "30px"
     :y "-30px"
