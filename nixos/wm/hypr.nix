@@ -20,12 +20,13 @@
   environment.systemPackages = with pkgs; [
     eww-wayland
 
-    dunst
+    mako
     libnotify
 
     swww
 
     rofi-wayland
+    tofi
   ];
 
   xdg.portal = {

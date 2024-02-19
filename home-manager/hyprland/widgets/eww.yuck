@@ -43,7 +43,7 @@
     (box "  ${active-app.title}")
   ))
 
-(defwindow workspace
+(defwindow workspace-primary
   :monitor 1
   :geometry (geometry
     :height "30px"
@@ -55,7 +55,7 @@
   (revealer
     :reveal is-visible
     (box
-      :class "workspace"
+      :class "workspace-primary"
       :width 200
       :space-evenly true
       (workspace-item :id "1")
@@ -63,6 +63,28 @@
       (workspace-item :id "3")
       (workspace-item :id "4")
       (workspace-item :id "5")
+      )))
+
+(defwindow workspace-secondary
+  :monitor 0
+  :geometry (geometry
+    :height "30px"
+    :anchor "bottom center")
+  :exclusive true
+  :stacking "overlay"
+  :windowtype "dock"
+  :wm-ignore false
+  (revealer
+    :reveal is-visible
+    (box
+      :class "workspace-secondary"
+      :width 200
+      :space-evenly true
+      (workspace-item :id "6")
+      (workspace-item :id "7")
+      (workspace-item :id "8")
+      (workspace-item :id "9")
+      (workspace-item :id "10")
       )))
 
 (defwidget workspace-item [id]
@@ -159,6 +181,7 @@ ${EWW_CPU.cores[15].core}: ${EWW_CPU.cores[15].usage}%"
             :width "50"
             :tooltip "restart"
             :class "reboot"
+            :onclick "reboot"
             "󰜉")
         ))
       

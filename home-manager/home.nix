@@ -6,8 +6,14 @@
 , pkgs
 , ...
 }:
+let submoduleArgs = {
+  inherit pkgs inputs lib config; palette = config.colorScheme.palette;
+};
+in
 {
-  colorScheme = inputs.nix-colors.colorSchemes.oxocarbon-dark;
+  # colorScheme = inputs.nix-colors.colorSchemes.onedark;
+  # colorScheme = inputs.nix-colors.colorSchemes.onedark;
+  colorScheme = inputs.nix-colors.lib.schemeFromYAML "onedark" (builtins.readFile ../theme.yaml);
   # You can import other home-manager modules here
   imports = [
     # If you want to use home-manager modules from other fl libakes (such as nix-colors):
@@ -19,8 +25,11 @@
     ./gtk.nix
     ./starship.nix
     ./neovim/default.nix
-    (import ./kitty.nix { inherit pkgs inputs; palette = config.colorScheme.palette; })
-    (import ./hyprland/default.nix { inherit pkgs inputs lib config; palette = config.colorScheme.palette; })
+    (import ./zellij.nix submoduleArgs)
+    (import ./rofi.nix submoduleArgs)
+    (import ./mako.nix submoduleArgs)
+    (import ./kitty.nix submoduleArgs)
+    (import ./hyprland/default.nix submoduleArgs)
   ];
 
   nixpkgs = {
@@ -63,6 +72,14 @@
       userEmail = "ganeshadanu1@gmail.com";
     };
 
+  programs.zsh = {
+    enable = true;
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+  };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

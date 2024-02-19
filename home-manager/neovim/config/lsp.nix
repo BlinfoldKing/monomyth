@@ -14,6 +14,7 @@
       };
       yamlls.enable = true;
       jsonls.enable = true;
+      tsserver.enable = true;
     };
   };
 

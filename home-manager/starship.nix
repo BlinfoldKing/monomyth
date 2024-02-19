@@ -4,8 +4,9 @@
     settings = {
       character = {
         success_symbol = "[󰘧](purple)";
-        error_symbol = " [󰘧](red)";
-        vimcmd_symbol = "[󰘧](green)";
+        error_symbol = "[󰘧](red)";
+
+        vimcmd_symbol = "[VI][󰘧](green)";
       };
     };
   };

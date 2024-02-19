@@ -25,6 +25,16 @@
     gnome3.gvfs
     gnome3.nautilus
     gparted
+
+    ripgrep
+    bat
+    eza
+    fzf
+    zoxide
+    yazi
+    tmux
+    zellij
+    zenith
   ];
 
   services.devmon.enable = true;
@@ -40,12 +50,18 @@
   };
   # enable controller
   hardware.xpadneo.enable = true;
-
+  #
   programs.zsh = {
     enable = true;
     ohMyZsh = {
       enable = true;
       plugins = [ "git" ];
+    };
+    shellAliases = {
+      cd = "z";
+      ls = "eza";
+      cls = "clear";
+      file = "yazi";
     };
   };
 

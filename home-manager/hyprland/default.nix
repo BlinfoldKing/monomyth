@@ -3,7 +3,7 @@ let
   widgetDir = "${./widgets}";
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
     swww init &
-    eww -c ${widgetDir} open-many header tray workspace quicklaunch &
+    eww -c ${widgetDir} open-many header tray workspace-primary workspace-secondary quicklaunch &
     sleep 1 &
     swww img ${./../../assets/wallpaper.jpg} &
   '';
@@ -18,7 +18,7 @@ in
 
       monitor = with buildConfig; [
         "DP-1,3440x1440@60,0x0,auto"
-        "HDMI-A-1,1920x1080@60,760x1440,auto"
+        "HDMI-A-1,1920x1080@60,760x1440,1"
       ];
 
       workspace = [
@@ -42,7 +42,7 @@ in
         gaps_in = 5;
         gaps_out = 20;
         border_size = 2;
-        "col.active_border" = "rgb(${base0A}) rgb(${base05}) 60deg";
+        "col.active_border" = "rgb(${base08}) rgb(${base05}) 60deg";
         "col.inactive_border" = "rgb(${base01})";
 
         layout = "dwindle";
@@ -69,8 +69,8 @@ in
         };
 
 
-      "$terminal" = "kitty";
-      "$fileManager" = "dolphin";
+      "$terminal" = "kitty zellij";
+      "$fileManager" = "nautilus";
       "$menu" = "rofi -show drun -show-icons";
 
 

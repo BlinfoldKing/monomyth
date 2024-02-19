@@ -10,26 +10,33 @@
           color0 = "#${base00}";
           color8 = "#${base01}";
 
-          color1 = "#${base02}";
-          color9 = "#${base03}";
+          #red
+          color1 = "#${base08}";
+          color9 = "#${base08}";
 
-          color2 = "#${base04}";
-          color10 = "#${base05}";
+          # green
+          color2 = "#${base0B}";
+          color10 = "#${base0B}";
 
-          color3 = "#${base06}";
-          color11 = "#${base07}";
+          # yellow
+          color3 = "#${base0A}";
+          color11 = "#${base0A}";
 
-          color4 = "#${base08}";
-          color12 = "#${base09}";
+          # blue
+          color4 = "#${base0D}";
+          color12 = "#${base0D}";
 
-          color5 = "#${base0A}";
-          color13 = "#${base0B}";
+          # magenta
+          color5 = "#${base0E}";
+          color13 = "#${base0E}";
 
+          # cyan
           color6 = "#${base0C}";
-          color14 = "#${base0D}";
+          color14 = "#${base0C}";
 
-          color7 = "#${base0E}";
-          color15 = "#${base0F}";
+          # gray
+          color7 = "#${base05}";
+          color15 = "#${base05}";
 
           # Window borders
           active_border_color = "#${base0C}";
@@ -47,7 +54,7 @@
           inactive_tab_background = "#${base05}";
           tab_bar_background = "#${base00}";
 
-          background_opacity = "0.90";
+          background_opacity = "0.95";
           window_padding_width = "10";
         };
         keybindings = {

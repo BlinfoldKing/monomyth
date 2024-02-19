@@ -17,6 +17,7 @@
     gcc
 
     nodejs
+    yarn
   ];
 
 }

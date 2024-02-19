@@ -13,6 +13,9 @@
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
     stdenv.cc.cc
+    alsa-lib
+    pkg-config
+    udev
     # Add any missing dynamic libraries for unpackaged programs
     # here, NOT in environment.systemPackages
   ];
@@ -28,7 +31,7 @@
     jq
     html-tidy
     httpie
-    disfetch
+    neofetch
     os-prober
     polkit_gnome
     xorg.xhost
