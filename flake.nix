@@ -58,6 +58,7 @@
 
       devShells.default =
         let
+          repo = "github:blinfoldking/monomyth";
           scripts = with pkgs; [
             (writeScriptBin "helpme" ''
               _usage="
@@ -79,15 +80,26 @@
             '')
 
             (writeScriptBin "install" ''
+              echo "install source: "$MODE
               update-os && update-home
             '')
 
             (writeScriptBin "update-os" ''
-              sudo nixos-rebuild switch --impure --flake .
+              if [[ "$MODE" == "github" ]];
+              then
+                sudo nixos-rebuild switch --impure --flake ${repo}
+              else
+                sudo nixos-rebuild switch --impure --flake .
+              fi
             '')
 
             (writeScriptBin "update-home" ''
-              home-manager build switch --flake .#blinfoldking@nixos
+              if [[ "$MODE" == "github" ]];
+              then
+                home-manager build switch --flake ${repo}#blinfoldking@nixos
+              else
+                home-manager build switch --flake .#blinfoldking@nixos
+              fi
             '')
 
             (writeScriptBin "logout" ''
@@ -107,6 +119,8 @@
           shellHook = ''
             helpme
           '';
+
+          MODE = "github";
         };
 
     });
