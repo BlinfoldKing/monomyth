@@ -74,4 +74,7 @@
     layout = "us";
     variant = "";
   };
+
+
+  users.users.blinfoldking.extraGroups = [ "docker" "adbusers" ];
 }

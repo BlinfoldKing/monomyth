@@ -9,6 +9,7 @@
     networkmanager-openvpn
 
     google-chrome
+    beekeeper-studio
     discord
     insomnia
     etcher
@@ -55,7 +56,7 @@
     enable = true;
     ohMyZsh = {
       enable = true;
-      plugins = [ "git" ];
+      plugins = [ "git" "zoxide" ];
     };
     shellAliases = {
       cd = "z";

@@ -5,6 +5,8 @@
     layer = "top";
     anchor = "top-right";
 
+    defaultTimeout = 5000;
+
     backgroundColor = "#${base00}";
     textColor = "#${base05}";
     borderColor = "#${base08}";

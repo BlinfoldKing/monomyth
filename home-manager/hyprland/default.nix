@@ -69,7 +69,7 @@ in
         };
 
 
-      "$terminal" = "kitty zellij";
+      "$terminal" = "kitty";
       "$fileManager" = "nautilus";
       "$menu" = "rofi -show drun -show-icons";
 

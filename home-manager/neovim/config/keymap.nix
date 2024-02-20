@@ -60,7 +60,9 @@
           l = {
             name = "LSP";
             h = [ "<cmd>Lspsaga hover_doc<CR>" "hover doc" ];
-            f = [ "<cmd>Lspsaga lsp_finder<CR>" "finder" ];
+            p = [ "<cmd>Lspsaga peek_definition<CR>" "peek_definition" ];
+            g = [ "<cmd>Lspsaga goto_definition<CR>" "goto_definition" ];
+            f = [ "<cmd>Lspsaga finder<CR>" "finder" ];
             r = [ "<cmd>Lspsaga rename<CR>" "rename" ];
             a = [ "<cmd>Lspsaga code_action<CR>" "code action" ];
             s = [ "<cmd>Lspsaga signature_help<CR>" "signature help" ];

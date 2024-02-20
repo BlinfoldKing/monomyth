@@ -4,7 +4,6 @@
   ];
 
   programs.adb.enable = true;
-  users.users.blinfoldking.extraGroups = [ "adbusers" ];
 
   services.udev.packages = [
     pkgs.android-udev-rules

@@ -2,6 +2,8 @@
 {
   environment.systemPackages = with pkgs; [
     gnumake
+    gcc
+
     rustup
 
     go
@@ -14,10 +16,13 @@
     golint
     mockgen
 
-    gcc
-
     nodejs
     yarn
-  ];
 
+    swiProlog
+
+    ruby
+
+    stack
+  ];
 }

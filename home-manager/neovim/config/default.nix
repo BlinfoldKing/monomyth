@@ -38,6 +38,8 @@
     surround.enable = true;
     nvim-colorizer.enable = true;
     comment-nvim.enable = true;
+    image.enable = true;
+    neorg.enable = true;
   };
 
 
