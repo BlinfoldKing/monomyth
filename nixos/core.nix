@@ -35,6 +35,7 @@
     os-prober
     polkit_gnome
     xorg.xhost
+    entr
   ];
 
   nix.settings.warn-dirty = false;

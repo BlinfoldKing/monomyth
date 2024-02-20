@@ -7,6 +7,12 @@
       rofi-systemd
     ];
 
+    location = "center";
+
+    extraConfig = {
+      modi = "drun,calc,power-menu:rofi-power-menu";
+    };
+
     theme =
       let
         inherit (config.lib.formats.rasi) mkLiteral;

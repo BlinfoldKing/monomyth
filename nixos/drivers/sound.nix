@@ -1,4 +1,4 @@
-{
+{ pkgs, ... }: {
   sound.enable = true;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -8,4 +8,18 @@
     pulse.enable = true;
     jack.enable = true;
   };
+
+
+  environment.systemPackages = with pkgs; [
+    pwvucontrol
+    playerctl
+  ];
+
+  nixpkgs.overlays = [
+    (self: super: {
+      mpv = super.mpv.override {
+        scripts = [ self.mpvScripts.mpris ];
+      };
+    })
+  ];
 }

@@ -47,8 +47,8 @@
 
           # tab_bar_style = "fade";
           tab_bar_style = "powerline";
-          active_tab_foreground = "#${base05}";
-          active_tab_background = "#${base0A}";
+          active_tab_foreground = "#${base00}";
+          active_tab_background = "#${base08}";
           active_tab_font_style = "bold";
           inactive_tab_foreground = "#${base00}";
           inactive_tab_background = "#${base05}";

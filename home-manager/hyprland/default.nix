@@ -1,14 +1,20 @@
 { pkgs, inputs, palette, lib, config, ... }:
 let
   widgetDir = "${./widgets}";
+  # eww -c ${widgetDir} open-many header tray workspace-primary workspace-secondary quicklaunch &
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
     swww init &
-    eww -c ${widgetDir} open-many header tray workspace-primary workspace-secondary quicklaunch &
     sleep 1 &
+    nm-applet &
+    waybar &
     swww img ${./../../assets/wallpaper.jpg} &
   '';
 in
 {
+  imports = [
+    (import ./waybar.nix { inherit pkgs palette; })
+  ];
+
   wayland.windowManager.hyprland = {
     enable = true;
 

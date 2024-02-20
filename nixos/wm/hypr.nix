@@ -18,7 +18,7 @@
 
   # List packages installed in system profile. To search, run:
   environment.systemPackages = with pkgs; [
-    eww-wayland
+    waybar
 
     mako
     libnotify
@@ -26,6 +26,7 @@
     swww
 
     rofi-wayland
+    rofi-power-menu
     tofi
   ];
 
