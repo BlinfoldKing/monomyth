@@ -4,6 +4,7 @@
 , lib
 , config
 , pkgs
+, username
 , ...
 }:
 let submoduleArgs = {
@@ -55,8 +56,8 @@ in
   };
 
   home = {
-    username = "blinfoldking";
-    homeDirectory = "/home/blinfoldking";
+    username = username;
+    homeDirectory = "/home/${username}";
   };
 
   # Add stuff for your user as you see fit:

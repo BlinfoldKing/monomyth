@@ -29,6 +29,10 @@
     , ...
     } @ inputs:
     let
+      repo = "github:blinfoldking/monomyth";
+      username = builtins.getEnv "USER";
+      hostname = builtins.getEnv "HOST";
+
       inherit (self) outputs;
     in
     utils.lib.eachDefaultSystem (system:
@@ -39,7 +43,7 @@
       packages = {
         nixosConfigurations = {
           nixos = nixpkgs.lib.nixosSystem {
-            specialArgs = { inherit inputs outputs; };
+            specialArgs = { inherit inputs outputs username hostname; };
             modules = [
               ./nixos/core.nix
             ];
@@ -47,9 +51,9 @@
         };
 
         homeConfigurations = {
-          "blinfoldking@nixos" = home-manager.lib.homeManagerConfiguration {
+          "${username}@${hostname}" = home-manager.lib.homeManagerConfiguration {
             inherit pkgs;
-            extraSpecialArgs = { inherit inputs outputs; };
+            extraSpecialArgs = { inherit inputs outputs username; };
             modules = [ ./home-manager/home.nix ];
           };
         };
@@ -58,7 +62,8 @@
 
       devShells.default =
         let
-          repo = "github:blinfoldking/monomyth";
+          build-os = "sudo nixos-rebuild switch --impure --flake";
+          build-home = "home-manager build switch --impure --flake";
           scripts = with pkgs; [
             (writeScriptBin "helpme" ''
               _usage="
@@ -87,18 +92,18 @@
             (writeScriptBin "update-os" ''
               if [[ "$MODE" == "github" ]];
               then
-                sudo nixos-rebuild switch --impure --flake ${repo}
+                ${build-os} ${repo}
               else
-                sudo nixos-rebuild switch --impure --flake .
+                ${build-os} .
               fi
             '')
 
             (writeScriptBin "update-home" ''
               if [[ "$MODE" == "github" ]];
               then
-                home-manager build switch --flake ${repo}#blinfoldking@nixos
+                ${build-home} ${repo}#$USER@nixos
               else
-                home-manager build switch --flake .#blinfoldking@nixos
+                ${build-home} .#$USER@nixos
               fi
             '')
 
@@ -119,8 +124,6 @@
           shellHook = ''
             helpme
           '';
-
-          MODE = "github";
         };
 
     });

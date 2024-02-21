@@ -6,7 +6,7 @@ A NixOS config with thousands stories
 
 just run this line:
 ```bash
-nix develop github:blinfoldking/monomyth --refresh -c install
+MODE=github nix develop github:blinfoldking/monomyth --refresh -c install
 ```
 
 ## Screenshots

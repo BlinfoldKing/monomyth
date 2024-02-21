@@ -1,4 +1,4 @@
-{ ... }: {
+{ username, ... }: {
   virtualisation.docker.enable = true;
-  users.users.blinfoldking.extraGroups = [ "docker" ];
+  users.users.${username}.extraGroups = [ "docker" ];
 }

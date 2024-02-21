@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, username, ... }:
 let
   tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
 in
@@ -8,7 +8,7 @@ in
     settings = {
       default_session = {
         command = "${tuigreet} --time --remember --cmd Hyprland";
-        user = "blinfoldking";
+        user = "${username}";
       };
     };
   };

@@ -1,4 +1,12 @@
-{ pkgs, lib, nix-colors, inputs, system, ... }: {
+{ pkgs
+, lib
+, nix-colors
+, inputs
+, system
+, username
+, hostname
+, ...
+}: {
   imports = [
     inputs.nix-colors.homeManagerModules.default
     /etc/nixos/configuration.nix
@@ -77,5 +85,5 @@
   };
 
 
-  users.users.blinfoldking.extraGroups = [ "docker" "adbusers" ];
+  users.users.${username}.extraGroups = [ "docker" "adbusers" ];
 }
