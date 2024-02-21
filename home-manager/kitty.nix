@@ -56,6 +56,8 @@
 
           background_opacity = "0.95";
           window_padding_width = "10";
+
+          enabled_layouts = "tall:bias=50;full_size=1;mirrored=false";
         };
         keybindings = {
           "F5" = "launch --location=hsplit";

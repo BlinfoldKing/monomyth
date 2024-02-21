@@ -33,7 +33,7 @@ in
         "custom/power-menu" = {
           format = "{icon}";
           format-icons = "";
-          on-click = "rofi -show power-menu -show-icons";
+          on-click = "wlogout";
         };
 
         "custom/launcher" = {

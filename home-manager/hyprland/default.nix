@@ -6,6 +6,7 @@ let
     swww init &
     sleep 1 &
     nm-applet &
+    blueman-applet &
     waybar &
     swww img ${./../../assets/wallpaper.jpg} &
   '';
@@ -13,6 +14,8 @@ in
 {
   imports = [
     (import ./waybar.nix { inherit pkgs palette; })
+    (import ./swaylock.nix { inherit pkgs palette; })
+    (import ./wlogout.nix { inherit pkgs palette; })
   ];
 
   wayland.windowManager.hyprland = {
@@ -93,7 +96,12 @@ in
       };
 
 
-      "windowrulev2" = "nomaximizerequest, class:.*";
+      windowrulev2 = [
+        "nomaximizerequest, class:.*"
+        "float,title:(Bluetooth Devices)"
+        "float,title:(Network Connections)"
+        "float,title:(Pipewire Volume Control)"
+      ];
 
       "$mod1" = "SUPER";
       "$mod2" = "ALT";

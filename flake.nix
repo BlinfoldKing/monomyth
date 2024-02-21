@@ -51,7 +51,7 @@
         };
 
         homeConfigurations = {
-          "${username}@${hostname}" = home-manager.lib.homeManagerConfiguration {
+          "${username}@nixos" = home-manager.lib.homeManagerConfiguration {
             inherit pkgs;
             extraSpecialArgs = { inherit inputs outputs username; };
             modules = [ ./home-manager/home.nix ];

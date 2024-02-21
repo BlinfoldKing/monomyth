@@ -28,7 +28,12 @@
     rofi-wayland
     rofi-power-menu
     tofi
+
+    wlogout
+    swaylock-effects
   ];
+
+  security.pam.services.swaylock = { };
 
   xdg.portal = {
     enable = true;
