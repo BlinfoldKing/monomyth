@@ -14,7 +14,7 @@ in
       {
         label = "shutdown";
         text = "shutdown";
-        action = "swaylock";
+        action = "systemctl poweroff";
         keybind = "s";
       }
 

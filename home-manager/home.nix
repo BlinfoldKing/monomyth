@@ -71,6 +71,14 @@ in
       enable = true;
       userName = "Ganesha Danu";
       userEmail = "ganeshadanu1@gmail.com";
+
+      extraConfig = {
+        url = {
+          "git@bitbucket.org:".insteadOf = "https://bitbucket.org/";
+          "git@github.com".insteadOf = "https://bitbucket.org/";
+        };
+      };
+
     };
 
   programs.zsh = {

@@ -67,7 +67,7 @@ in
         };
 
         memory = {
-          format = "󱔼 {percentage}%";
+          format = " {percentage}%";
         };
 
         disk = {
