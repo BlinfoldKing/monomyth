@@ -24,5 +24,7 @@
     ruby
 
     stack
+
+    zig
   ];
 }

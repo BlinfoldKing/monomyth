@@ -15,6 +15,7 @@
       yamlls.enable = true;
       jsonls.enable = true;
       tsserver.enable = true;
+      zls.enable = true;
     };
   };
 
@@ -72,6 +73,10 @@
       "nix"
       "lua"
       "go"
+      "rust"
+      "zig"
+      "typescript"
+      "javascript"
     ];
   };
 

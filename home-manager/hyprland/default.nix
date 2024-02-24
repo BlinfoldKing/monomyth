@@ -61,8 +61,6 @@ in
 
       decoration =
         {
-          # See https://wiki.hyprland.org/Configuring/Variables/ for more
-
           rounding = 5;
 
           blur = {
@@ -81,6 +79,8 @@ in
       "$terminal" = "kitty";
       "$fileManager" = "nautilus";
       "$menu" = "rofi -show drun -show-icons";
+      "$lock" = "swaylock";
+      "$power" = "wlogout";
 
 
 
@@ -107,9 +107,10 @@ in
       "$mod2" = "ALT";
 
       bind = [
-        "$mod1, Q, exec, $terminal"
-        "$mod1, C, killactive, "
-        ''$mod1, M, execr, "pkill -KILL -u $(whoami)"''
+        "$mod1, RETURN, exec, $terminal"
+        "$mod1, L, exec, $lock"
+        "$mod1, Q, killactive, "
+        "$mod1, M, exec, $power"
         "$mod1, E, exec, $fileManager"
         "$mod1, V, togglefloating, "
         "$mod1, R, exec, $menu"
