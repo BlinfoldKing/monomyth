@@ -31,7 +31,6 @@
     let
       repo = "github:blinfoldking/monomyth";
       username = builtins.getEnv "USER";
-      hostname = builtins.getEnv "HOST";
 
       inherit (self) outputs;
     in
@@ -43,7 +42,7 @@
       packages = {
         nixosConfigurations = {
           nixos = nixpkgs.lib.nixosSystem {
-            specialArgs = { inherit inputs outputs username hostname; };
+            specialArgs = { inherit inputs outputs username; };
             modules = [
               ./nixos/core.nix
             ];
@@ -63,6 +62,7 @@
       devShells.default =
         let
           build-os = "sudo nixos-rebuild switch --impure --flake";
+          upgrade-os = "sudo nixos-rebuild --upgrade switch --impure --flake";
           build-home = "home-manager build switch --impure --flake";
           scripts = with pkgs; [
             (writeScriptBin "helpme" ''
@@ -73,6 +73,7 @@
               COMMAND       USAGE
               install       to install/update the whole config
               update-os     to update os config
+              upgrade-os    to upgrade os config
               update-home   to update home manager
               logout        logout user
               reboot        restart your system
@@ -109,6 +110,15 @@
 
             (writeScriptBin "logout" ''
               pkill -KILL -u $USER
+            '')
+
+            (writeScriptBin "upgrade-os" ''
+              if [[ "$MODE" == "github" ]];
+              then
+                ${upgrade-os} ${repo}
+              else
+                ${upgrade-os} .
+              fi
             '')
           ];
         in

@@ -44,6 +44,7 @@
     polkit_gnome
     xorg.xhost
     entr
+    pkg-config
   ];
 
   nix.settings.warn-dirty = false;
