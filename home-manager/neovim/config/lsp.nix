@@ -16,6 +16,7 @@
       jsonls.enable = true;
       tsserver.enable = true;
       zls.enable = true;
+      taplo.enable = true;
     };
   };
 

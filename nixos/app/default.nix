@@ -27,12 +27,16 @@
     gnome3.nautilus
     gparted
 
+    vlc
+    libvlc
+
     ripgrep
     bat
     eza
     fzf
     zoxide
     yazi
+    viu
     tmux
     zellij
     zenith

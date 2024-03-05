@@ -14,7 +14,6 @@
     gocode-gomod
     godef
     golint
-    mockgen
 
     nodejs
     yarn

@@ -75,7 +75,7 @@ in
       extraConfig = {
         url = {
           "git@bitbucket.org:".insteadOf = "https://bitbucket.org/";
-          "git@github.com".insteadOf = "https://bitbucket.org/";
+          "git@github.com:".insteadOf = "https://github.com/";
         };
       };
 

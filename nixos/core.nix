@@ -7,6 +7,7 @@
 , hostname
 , ...
 }: {
+
   imports = [
     inputs.nix-colors.homeManagerModules.default
     /etc/nixos/configuration.nix
@@ -87,4 +88,5 @@
 
 
   users.users.${username}.extraGroups = [ "docker" "adbusers" ];
+  users.users.blinfoldking.extraGroups = [ "docker" "adbusers" ];
 }

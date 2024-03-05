@@ -32,6 +32,7 @@
       repo = "github:blinfoldking/monomyth";
       username = builtins.getEnv "USER";
 
+
       inherit (self) outputs;
     in
     utils.lib.eachDefaultSystem (system:
@@ -70,13 +71,15 @@
               make sure you check and adjust everything, then run
               one of these commands
 
-              COMMAND       USAGE
-              install       to install/update the whole config
-              update-os     to update os config
-              upgrade-os    to upgrade os config
-              update-home   to update home manager
-              logout        logout user
-              reboot        restart your system
+              COMMAND                     USAGE
+              install                     to install/update the whole config
+              update-os                   to update os config
+              upgrade-os                  to upgrade os config
+              update-home                 to update home manager
+              logout                      logout user
+              reboot                      restart your system
+              list-generations            list all generations
+              clean-os-generations        remove old generations up to 5 recent one
 
               PS: this shell include vim for you to make
               simple edits
@@ -119,6 +122,14 @@
               else
                 ${upgrade-os} .
               fi
+            '')
+
+            (writeScriptBin "list-generations" ''
+              sudo nix-env --profile /nix/var/nix/profiles/system --list-generations
+            '')
+
+            (writeScriptBin "clean-os-generations" ''
+              sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations +5
             '')
           ];
         in
