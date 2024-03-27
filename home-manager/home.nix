@@ -21,11 +21,9 @@ in
     # inputs.nix-colors.homeManagerModule
 
     # You can also split up your configuration and import pieces of it here:
-    # ./nvim.nix
     inputs.nix-colors.homeManagerModules.default
     ./gtk.nix
     ./starship.nix
-    ./neovim/default.nix
     (import ./zellij.nix submoduleArgs)
     (import ./rofi.nix submoduleArgs)
     (import ./mako.nix submoduleArgs)

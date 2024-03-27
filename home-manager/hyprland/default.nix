@@ -26,17 +26,17 @@ in
       # TODO: make this value not hardcoded
 
       monitor = with buildConfig; [
-        "DP-1,3440x1440@60,0x0,auto"
+        "DP-2,3440x1440@60,0x0,auto"
         "HDMI-A-1,1920x1080@60,760x1440,1"
       ];
 
       workspace = [
         # first monitor
-        "1,monitor:DP-1,default:true"
-        "2,monitor:DP-1,"
-        "3,monitor:DP-1,"
-        "4,monitor:DP-1,"
-        "5,monitor:DP-1,"
+        "1,monitor:DP-2,default:true"
+        "2,monitor:DP-2,"
+        "3,monitor:DP-2,"
+        "4,monitor:DP-2,"
+        "5,monitor:DP-2,"
 
         # second monitor
         "6,monitor:HDMI-A-1,"

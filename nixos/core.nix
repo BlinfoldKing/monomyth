@@ -18,6 +18,7 @@
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  services.flatpak.enable = true;
 
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
@@ -46,6 +47,8 @@
     xorg.xhost
     entr
     pkg-config
+
+    inputs.vizier.packages.${system}.default
   ];
 
   nix.settings.warn-dirty = false;

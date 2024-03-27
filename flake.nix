@@ -18,6 +18,7 @@
 
     utils.url = "github:numtide/flake-utils";
 
+    vizier.url = "github:blinfoldking/vizier";
   };
 
   outputs =
@@ -43,7 +44,7 @@
       packages = {
         nixosConfigurations = {
           nixos = nixpkgs.lib.nixosSystem {
-            specialArgs = { inherit inputs outputs username; };
+            specialArgs = { inherit inputs outputs username system; };
             modules = [
               ./nixos/core.nix
             ];

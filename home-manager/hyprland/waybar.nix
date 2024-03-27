@@ -24,11 +24,11 @@ in
         margin-right = 10;
         margin-left = 10;
         output = [
-          "DP-1"
+          "DP-2"
         ];
 
         modules-left = [ "custom/launcher" "hyprland/workspaces" "group/cpu-stat" "group/mem-stat" ];
-        modules-right = [ "mpris" "pulseaudio" "tray" "clock" "custom/power-menu" ];
+        modules-right = [ "mpris" "wireplumber" "tray" "clock" "custom/power-menu" ];
 
         "custom/power-menu" = {
           format = "{icon}";
@@ -117,7 +117,7 @@ in
           };
 
           "persistent-workspaces" = {
-            "DP-1" = [ 1 2 3 4 5 ];
+            "DP-2" = [ 1 2 3 4 5 ];
           };
         };
 
@@ -187,28 +187,13 @@ in
         background: ${bg};
       }
 
-      #pulseaudio {
+      #wireplumber {
         background: ${bg};
         color: ${fg};
         border-radius: 20px;
         min-height: 40px;
         font-size: 12px;
         min-width: 100px;
-      }
-
-      #pulseaudio.med {
-        background: ${yellow};
-        color: ${bg};            
-      }
-
-      #pulseaudio.high {
-        background: ${red};
-        color: ${bg};
-      }
-
-      tooltip {
-        background: ${bg};
-        color: ${fg};
       }
 
       #mpris {

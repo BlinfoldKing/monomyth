@@ -12,7 +12,6 @@
     beekeeper-studio
     discord
     insomnia
-    etcher
     woeusb
 
     git
