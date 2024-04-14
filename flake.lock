@@ -637,11 +637,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1713038713,
-        "narHash": "sha256-xijgNVqLYXUbpSsGXh7bzx6zCRVf+WGlTcGMG04mQjA=",
+        "lastModified": 1713087347,
+        "narHash": "sha256-RpRIJcbAjR3SF6tarvdG0ErN9afifG/zjxNlntRQrw4=",
         "owner": "nix-community",
         "repo": "nixvim",
-        "rev": "1da2087d9b8a89c310d093207afd41114d6727e1",
+        "rev": "ad6a08b69528fdaf7e12c90da06f9a34f32d7ea6",
         "type": "github"
       },
       "original": {
@@ -873,11 +873,11 @@
         "nixvim": "nixvim_2"
       },
       "locked": {
-        "lastModified": 1713080847,
-        "narHash": "sha256-jkPJ5UQdeOPSUon3AuCMKMdA1KxILI1YObvAvSvv8P4=",
+        "lastModified": 1713100252,
+        "narHash": "sha256-MBcDJz/viq2SarnbpnVlVqoISlL4ATIh/9SwARb5Q9M=",
         "ref": "refs/heads/master",
-        "rev": "96614b76ddd2a9ce3d63f5c3ebfbd5fd9a509fc7",
-        "revCount": 2,
+        "rev": "2163bbf31d97c81d9fdce38e905372cee5390ef3",
+        "revCount": 3,
         "type": "git",
         "url": "file:./modules/vizier"
       },
