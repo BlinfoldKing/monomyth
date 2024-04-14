@@ -97,7 +97,7 @@ in
 
 
       windowrulev2 = [
-        "nomaximizerequest, class:.*"
+        "stayfocused,class:(Rofi)"
         "float,title:(Bluetooth Devices)"
         "float,title:(Network Connections)"
         "float,title:(Pipewire Volume Control)"
@@ -112,7 +112,7 @@ in
         "$mod1, Q, killactive, "
         "$mod1, M, exec, $power"
         "$mod1, E, exec, $fileManager"
-        "$mod1, V, togglefloating, "
+        "$mod1, F, togglefloating, "
         "$mod1, R, exec, $menu"
         "$mod1, P, pseudo,"
         "$mod1, J, togglesplit,"
@@ -120,6 +120,8 @@ in
 
         "$mod1, mouse_down, workspace, e+1"
         "$mod1, mouse_up, workspace, e-1"
+
+        "$mod1, V, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
 
         "$mod2, 1, workspace, 1"
         "$mod2, 2, workspace, 2"
@@ -161,6 +163,9 @@ in
       ];
 
       exec-once = [
+        "wl-paste --type text --watch cliphist store" #Stores only text data
+        "wl-paste --type image --watch cliphist store" #Stores only image data 
+
         "xhost + > /dev/null"
         "${startupScript}/bin/start"
       ];

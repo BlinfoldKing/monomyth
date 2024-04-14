@@ -20,6 +20,7 @@
     grim
     slurp
     wl-clipboard
+    cliphist
     grimblast
 
     gnome3.gvfs
