@@ -27,8 +27,10 @@
     swww
     pywal
 
+    # TODO: deprecrate rofi in favor of tofi
     rofi-wayland
     rofi-power-menu
+
     tofi
 
     wlogout

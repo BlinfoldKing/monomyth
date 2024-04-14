@@ -14,6 +14,7 @@ let
 in
 {
   imports = [
+    (import ./wofi.nix { inherit pkgs palette; })
     (import ./waybar.nix { inherit pkgs palette; })
     (import ./swaylock.nix { inherit pkgs palette; })
     (import ./wlogout.nix { inherit pkgs palette; })
@@ -55,9 +56,28 @@ in
         "col.active_border" = "rgb(${base08}) rgb(${base05}) 60deg";
         "col.inactive_border" = "rgb(${base01})";
 
+        "col.nogroup_border_active" = "rgb(${base08}) rgb(${base05}) 60deg";
+        "col.nogroup_border" = "rgb(${base01})";
+
+
         layout = "dwindle";
 
         allow_tearing = false;
+      };
+
+      group = {
+        "col.border_active" = "rgb(${base08}) rgb(${base05}) 60deg";
+        "col.border_inactive" = "rgb(${base01})";
+
+        groupbar = {
+          enabled = true;
+          "col.active" = "rgb(${base08})";
+          "col.inactive" = "rgb(${base05})";
+        };
+      };
+
+      opengl = {
+        nvidia_anti_flicker = true;
       };
 
       decoration =
@@ -70,20 +90,22 @@ in
             passes = 1;
           };
 
-          drop_shadow = "yes";
+          drop_shadow = true;
           shadow_range = 4;
           shadow_render_power = 3;
           "col.shadow" = "rgb(${base00})";
         };
 
+      misc = {
+        disable_hyprland_logo = true;
+      };
+
 
       "$terminal" = "kitty";
       "$fileManager" = "nautilus";
-      "$menu" = "rofi -show drun -show-icons";
+      "$menu" = import ./tofi/default.nix { inherit pkgs palette; };
       "$lock" = "swaylock";
       "$power" = "wlogout";
-
-
 
       env = [
         "XCURSOR_SIZE,24"

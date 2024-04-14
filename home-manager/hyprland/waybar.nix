@@ -25,6 +25,7 @@ in
         margin-left = 10;
         output = [
           "DP-2"
+          "HDMI-A-1"
         ];
 
         modules-left = [ "custom/launcher" "hyprland/workspaces" "group/cpu-stat" "group/mem-stat" ];
@@ -39,7 +40,7 @@ in
         "custom/launcher" = {
           format = "{icon}";
           format-icons = "󱄅";
-          on-click = "rofi -show drun -show-icons";
+          on-click = "tofi-drun";
         };
 
         "custom/cpu-icon" = {
@@ -118,6 +119,7 @@ in
 
           "persistent-workspaces" = {
             "DP-2" = [ 1 2 3 4 5 ];
+            "HDMI-A-1" = [ 6 7 8 9 10 ];
           };
         };
 
