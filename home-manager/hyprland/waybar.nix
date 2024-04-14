@@ -164,7 +164,7 @@ in
       #workspaces {
         background: ${bg};
         color: ${fg};
-        border-radius: 20px;
+        border-radius: 5px;
         min-height: 40px;
         font-size: 20px;
       }
@@ -172,7 +172,7 @@ in
       #tray, #clock {
         background: ${bg};
         color: ${fg};
-        border-radius: 20px;
+        border-radius: 5px;
         min-height: 40px;
         font-size: 12px;
         min-width: 60px;
@@ -190,7 +190,7 @@ in
       #wireplumber {
         background: ${bg};
         color: ${fg};
-        border-radius: 20px;
+        border-radius: 5px;
         min-height: 40px;
         font-size: 12px;
         min-width: 100px;
@@ -199,7 +199,7 @@ in
       #mpris {
         background: ${bg};
         color: ${fg};
-        border-radius: 20px;
+        border-radius: 5px;
         min-height: 40px;
         font-size: 12px;
         min-width: 100px;
@@ -214,7 +214,7 @@ in
       #custom-power-menu {
         min-height: 40px;
         min-width: 40px;
-        border-radius: 20px;
+        border-radius: 5px;
         padding-left: 7px;
         padding-right: 13px;
         background: ${red};
@@ -225,7 +225,7 @@ in
         min-height: 40px;
         min-width: 40px;
         font-size: 20px;
-        border-radius: 20px;
+        border-radius: 5px;
         padding-left: 7px;
         padding-right: 13px;
         background: ${fg};
@@ -235,7 +235,7 @@ in
       #cpu-stat {
         min-height: 40px;
         min-width: 40px;
-        border-radius: 20px;
+        border-radius: 5px;
         padding-left: 7px;
         padding-right: 13px;
         padding: 0 10px;
@@ -247,7 +247,7 @@ in
       #mem-stat {
         min-height: 40px;
         min-width: 40px;
-        border-radius: 20px;
+        border-radius: 5px;
         padding-left: 7px;
         padding-right: 13px;
         padding: 0 10px;

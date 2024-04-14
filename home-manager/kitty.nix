@@ -54,7 +54,7 @@
           inactive_tab_background = "#${base05}";
           tab_bar_background = "#${base00}";
 
-          background_opacity = "0.95";
+          background_opacity = "1";
           window_padding_width = "10";
 
           enabled_layouts = "tall:bias=50;full_size=1;mirrored=false";

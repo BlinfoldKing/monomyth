@@ -306,11 +306,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1713019815,
-        "narHash": "sha256-jzTo97VeKMNfnKw3xU+uiU5C7wtnLudsbwl/nwPLC7s=",
+        "lastModified": 1713077896,
+        "narHash": "sha256-Noot8H0EZEAFRQWyGxh9ryvhK96xpIqKbh78X447JWs=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "8fdf329526f06886b53b94ddf433848a0d142984",
+        "rev": "630a0992b3627c64e34f179fab68e3d48c6991c0",
         "type": "github"
       },
       "original": {
@@ -873,11 +873,11 @@
         "nixvim": "nixvim_2"
       },
       "locked": {
-        "lastModified": 1709910909,
-        "narHash": "sha256-svriH8GPCwa2ZMLMYgoNccHZ1DSIzhP4v1Gy2850IcQ=",
+        "lastModified": 1713080847,
+        "narHash": "sha256-jkPJ5UQdeOPSUon3AuCMKMdA1KxILI1YObvAvSvv8P4=",
         "ref": "refs/heads/master",
-        "rev": "87c03511a44c5b9e6a06eb7baf3126e79af9b250",
-        "revCount": 1,
+        "rev": "96614b76ddd2a9ce3d63f5c3ebfbd5fd9a509fc7",
+        "revCount": 2,
         "type": "git",
         "url": "file:./modules/vizier"
       },

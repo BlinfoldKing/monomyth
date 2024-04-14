@@ -8,8 +8,9 @@ let
     nm-applet &
     blueman-applet &
     waybar &
-    swww img ${./../../assets/wallpaper.jpg} &
+    swww img ${./../../assets/wallpapers/Sif.png} &
   '';
+
 in
 {
   imports = [
@@ -65,7 +66,7 @@ in
 
           blur = {
             enabled = true;
-            size = 3;
+            size = 10;
             passes = 1;
           };
 
@@ -97,10 +98,12 @@ in
 
 
       windowrulev2 = [
-        "stayfocused,class:(Rofi)"
+        "stayfocused,class:^(rofi)"
         "float,title:(Bluetooth Devices)"
         "float,title:(Network Connections)"
         "float,title:(Pipewire Volume Control)"
+        "opacity 0.95 0.95,class:^(google-chrome)"
+        "opacity 0.95 0.95,class:^(kitty)"
       ];
 
       "$mod1" = "SUPER";

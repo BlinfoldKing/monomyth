@@ -25,6 +25,7 @@
     libnotify
 
     swww
+    pywal
 
     rofi-wayland
     rofi-power-menu
