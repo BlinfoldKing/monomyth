@@ -875,15 +875,15 @@
       "locked": {
         "lastModified": 1709910909,
         "narHash": "sha256-svriH8GPCwa2ZMLMYgoNccHZ1DSIzhP4v1Gy2850IcQ=",
-        "owner": "blinfoldking",
-        "repo": "vizier",
+        "ref": "refs/heads/master",
         "rev": "87c03511a44c5b9e6a06eb7baf3126e79af9b250",
-        "type": "github"
+        "revCount": 1,
+        "type": "git",
+        "url": "file:./modules/vizier"
       },
       "original": {
-        "owner": "blinfoldking",
-        "repo": "vizier",
-        "type": "github"
+        "type": "git",
+        "url": "file:./modules/vizier"
       }
     },
     "wlroots": {

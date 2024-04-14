@@ -18,7 +18,10 @@
 
     utils.url = "github:numtide/flake-utils";
 
-    vizier.url = "github:blinfoldking/vizier";
+    vizier = {
+      url = "git+file:./modules/vizier";
+      flake = true;
+    };
   };
 
   outputs =
