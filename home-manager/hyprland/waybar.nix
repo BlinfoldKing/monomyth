@@ -9,6 +9,7 @@ let
   yellow = "#${palette.base0A}";
   orange = "#${palette.base09}";
   magenta = "#${palette.base0E}";
+  tofi-exec = import ./tofi/default.nix { inherit pkgs palette; };
 in
 {
   programs.waybar = {
@@ -29,7 +30,7 @@ in
         ];
 
         modules-left = [ "custom/launcher" "hyprland/workspaces" "group/cpu-stat" "group/mem-stat" ];
-        modules-right = [ "mpris" "wireplumber" "tray" "clock" "custom/power-menu" ];
+        modules-right = [ "mpris" "pulseaudio" "group/custom-tray" "clock" "custom/power-menu" ];
 
         "custom/power-menu" = {
           format = "{icon}";
@@ -40,7 +41,7 @@ in
         "custom/launcher" = {
           format = "{icon}";
           format-icons = "󱄅";
-          on-click = "tofi-drun";
+          on-click = tofi-exec;
         };
 
         "custom/cpu-icon" = {
@@ -123,6 +124,20 @@ in
           };
         };
 
+        "custom/screenshot" = {
+          format = "{icon}";
+          format-icons = "󰄀";
+          on-click = ''hyprctl dispatch exec "grimblast copysave area"'';
+        };
+
+        "group/custom-tray" = {
+          orientation = "horizontal";
+          modules = [
+            "tray"
+            "custom/screenshot"
+          ];
+        };
+
         tray = {
           icon-size = 20;
           spacing = 5;
@@ -163,6 +178,14 @@ in
         margin: 0 5px; 
       }
 
+      tooltip {
+        background: ${bg};
+      }
+
+      tooltip label {
+        color: ${fg};
+      }
+
       #workspaces {
         background: ${bg};
         color: ${fg};
@@ -171,7 +194,7 @@ in
         font-size: 20px;
       }
       
-      #tray, #clock {
+      #clock, #custom-tray {
         background: ${bg};
         color: ${fg};
         border-radius: 5px;
@@ -179,6 +202,11 @@ in
         font-size: 12px;
         min-width: 60px;
         padding: 0 10px;
+      }
+
+      #custom-screenshot {
+        font-size: 16px;
+        margin: 0 10px;
       }
 
       #clock {
@@ -189,7 +217,7 @@ in
         background: ${bg};
       }
 
-      #wireplumber {
+      #wireplumber, #pulseaudio {
         background: ${bg};
         color: ${fg};
         border-radius: 5px;

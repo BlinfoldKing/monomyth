@@ -12,6 +12,7 @@
 
   environment.systemPackages = with pkgs; [
     playerctl
+    pwvucontrol
   ];
 
   nixpkgs.overlays = [
