@@ -2,6 +2,7 @@
 {
   nixpkgs.config.permittedInsecurePackages = [
     "electron-19.1.9"
+    "adobe-reader-9.5.5"
   ];
 
   environment.systemPackages = with pkgs; [
@@ -41,7 +42,7 @@
     zellij
     zenith
     termpdfpy
-    bookworm
+    adobe-reader
   ];
 
   services.devmon.enable = true;
