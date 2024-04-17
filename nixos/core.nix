@@ -47,11 +47,18 @@
     xorg.xhost
     entr
     pkg-config
+    opentabletdriver
+
+    flatpak
+    gnome.gnome-software
 
     inputs.vizier.packages.${system}.default
+
   ];
 
   nix.settings.warn-dirty = false;
+
+  hardware.opentabletdriver.enable = true;
 
   fonts.packages = with pkgs; [
     fira-code

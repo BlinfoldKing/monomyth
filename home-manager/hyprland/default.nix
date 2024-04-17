@@ -28,7 +28,7 @@ in
       # TODO: make this value not hardcoded
 
       monitor = with buildConfig; [
-        "DP-2,3440x1440@60,0x0,auto"
+        "DP-2,3440x1440@59.99,0x0,auto"
         "HDMI-A-1,1920x1080@60,760x1440,1"
       ];
 

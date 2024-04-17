@@ -40,6 +40,8 @@
     tmux
     zellij
     zenith
+    termpdfpy
+    bookworm
   ];
 
   services.devmon.enable = true;
